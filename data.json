@@ -4,19 +4,21 @@
             "username": "user01",
             "password": "Test@123",
             "account_number": "10010001",
-            "balance": 2400.0,
+            "balance": 2200.0,
             "status": "Active",
             "daily_transfer_count": 0,
-            "last_transfer_date": ""
+            "last_transfer_date": "",
+            "history": ""
         },
         {
             "username": "user02",
             "password": "Test@456",
             "account_number": "10010002",
-            "balance": 1600.0,
+            "balance": 1800.0,
             "status": "Active",
             "daily_transfer_count": 0,
-            "last_transfer_date": ""
+            "last_transfer_date": "",
+            "history": ""
         },
         {
             "username": "user03",
@@ -25,7 +27,8 @@
             "balance": 3000.0,
             "status": "Active",
             "daily_transfer_count": 0,
-            "last_transfer_date": ""
+            "last_transfer_date": "",
+            "history": ""
         }
     ]
 }

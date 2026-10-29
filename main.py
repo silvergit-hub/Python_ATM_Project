@@ -1,3 +1,4 @@
+import datetime
 from datetime import date
 import json
 import os
@@ -85,10 +86,16 @@ elif user_info.get("daily_transfer_count")>=5:
 elif confirm!="Y":
     print("Transfer rejected")
 else:
+    print("")
     print("Transfer successful.")
     user_info["balance"]-=amount
     rec_info["balance"]+=amount
-    save_data(database)
+    user_info["daily_transfer_count"]+=1
     print("Sender new balance: ",user_info["balance"])
+    history_line="Date: "+str(datetime.datetime.now())+"/"+"Type: Trannsfer sent/"+"Recipient account:"+rec_info.get("account_number")+"/"+"Amount: -"+str(amount)+" AZN/"+"Balance before:"+str(user_info.get("balance")+amount)+" AZN/"+str(user_info.get("balance"))
+    user_info["history"]+=history_line
+    history_line="Date: "+str(datetime.datetime.now())+"/"+"Type: Trannsfer recieved/"+"Sender account:"+user_info.get("account_number")+"/"+"Amount: "+str(amount)+" AZN/"+"Balance before:"+str(user_info.get("balance")-amount)+" AZN/"+str(user_info.get("balance"))
+    rec_info["history"]+=history_line
+    save_data(database)
 
 """Last_transfer_date-lər doldurulmalı, cari istifadəçiyə uyğun user_account doldurulmalıdır"""
