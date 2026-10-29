@@ -6,17 +6,17 @@ Document="users.json"
 def load_data():
   if not os.path.exists(Document):
     users = {
-        "user01": {
+        "user1": {
             "password": hashlib.sha256("Test@123".encode()).hexdigest(),
             "attempts": 0,
             "blocked": False,
         },
-        "user02": {
+        "user2": {
             "password": hashlib.sha256("Test@456".encode()).hexdigest(),
             "attempts": 0,
             "blocked": False,
         },
-        "user03": {
+        "user3": {
             "password": hashlib.sha256("Test@789".encode()).hexdigest(),
             "attempts": 0,
             "blocked": False,
@@ -34,3 +34,24 @@ def load_data():
 def save_data(data):
   with open(Document, "w") as f:
     json.dump(data, f)
+
+def login():
+  print("=== BANK SYSTEM LOGIN ===")
+  username = input("Enter username: ")
+  data = load_data()
+
+  if username not in data:
+    print("User not found!")
+    return None
+
+  password = input("Enter password: ")
+  hashed_pass = hashlib.sha256(password.encode()).hexdigest()
+
+  if hashed_pass == data[username]["password"]:
+    print(f"Login successful! Welcome, {username}")
+    data[username]["attempts"] = 0
+    save_data(data)
+    return username
+  else:
+    print("Wrong password!")
+    return None 
