@@ -6,17 +6,17 @@ Document="users.json"
 def load_data():
   if not os.path.exists(Document):
     users = {
-        "user1": {
+        "user01": {
             "password": hashlib.sha256("Test@123".encode()).hexdigest(),
             "attempts": 0,
             "blocked": False,
         },
-        "user2": {
+        "user02": {
             "password": hashlib.sha256("Test@456".encode()).hexdigest(),
             "attempts": 0,
             "blocked": False,
         },
-        "user3": {
+        "user03": {
             "password": hashlib.sha256("Test@789".encode()).hexdigest(),
             "attempts": 0,
             "blocked": False,
