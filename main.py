@@ -55,7 +55,6 @@ users_list = database["users"]
 
 #-------------------------------------
 user_account="user01" #user_account hal-hazırda hesaba giriş edən istifadəçinin hesabıdır
-user_amount=2500.00  #user_amount hal-hazırda hesaba giriş edən istifadəçinin hesabındakı pul miqdarıdır
 #--------------------------------------
 print("Sender: ",user_account)
 recipient_account=input("Recipient account: ")
@@ -91,3 +90,5 @@ else:
     rec_info["balance"]+=amount
     save_data(database)
     print("Sender new balance: ",user_info["balance"])
+
+"""Last_transfer_date-lər doldurulmalı, cari istifadəçiyə uyğun user_account doldurulmalıdır"""
