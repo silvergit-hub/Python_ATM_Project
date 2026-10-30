@@ -59,9 +59,9 @@ else:
     rec_info["balance"]+=amount
     user_info["daily_transfer_count"]+=1
     print("Sender new balance: ",user_info["balance"])
-    history_line="Date: "+str(datetime.datetime.now())+"/"+"Type: Trannsfer sent/"+"Recipient account:"+rec_info.get("account_number")+"/"+"Amount: -"+str(amount)+" AZN/"+"Balance before:"+str(user_info.get("balance")+amount)+" AZN/"+str(user_info.get("balance"))
+    history_line="Date: "+str(datetime.datetime.now())+"/"+"Type: Trannsfer sent/"+"Recipient account: "+rec_info.get("account_number")+"/"+"Amount: -"+str(amount)+" AZN/"+"Balance before:"+str(user_info.get("balance")+amount)+" AZN/"+"New balance: "+str(user_info.get("balance"))
     user_info["history"]+=history_line
-    history_line="Date: "+str(datetime.datetime.now())+"/"+"Type: Trannsfer recieved/"+"Sender account:"+user_info.get("account_number")+"/"+"Amount: "+str(amount)+" AZN/"+"Balance before:"+str(user_info.get("balance")-amount)+" AZN/"+str(user_info.get("balance"))
+    history_line="Date: "+str(datetime.datetime.now())+"/"+"Type: Trannsfer recieved/"+"Sender account: "+user_info.get("account_number")+"/"+"Amount: "+str(amount)+" AZN/"+"Balance before:"+str(user_info.get("balance")-amount)+" AZN/"+"New balance: "+str(user_info.get("balance"))
     rec_info["history"]+=history_line
     save_data(database)
 
