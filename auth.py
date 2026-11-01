@@ -3,9 +3,10 @@ users={
     "user02": "Test@456",
     "user03": "Test@789"
 }
+import time 
 
 attempts=0
-while attempts<3:
+while True:
     username=input("Enter your username: ")
     password=input("Enter your password: ")
 
@@ -17,3 +18,9 @@ while attempts<3:
         attempts+=1
         print("Invalid username or password!")
         print("Attempts left:", 3-attempts)
+    if attempts==3:
+        print("Account temporarily locked. Please try again after 60 seconds.")
+        for seconds in range(60, 0, -1):
+            print(f"Time left: {seconds} seconds")
+            time.sleep(1)
+        attempts=0
