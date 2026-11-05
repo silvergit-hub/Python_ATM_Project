@@ -31,4 +31,31 @@ while True:
                 print(f"Time left: {seconds} seconds")
                 time.sleep(1)
             attempts=0
-    
+
+def change_password(username):
+    old_password=input("Enter your current password: ")
+    if users[username]!=old_password:
+        print("Incorrect current password!")
+        return
+    new_password=input("Enter your new password: ")
+    if new_password==old_password:
+        print("New password must be different!")
+        return
+    if len (new_password)<8:
+        print("Password must have at least 8 characters!")
+        return
+    if not any (char.isupper() for char in new_password):
+        print("Password must contain an uppercase letter!")
+        return
+    if not any (char.islower() for char in new_password):
+        print("Password must contain a lowercase letter!")
+        return
+    if not any (char.isdigit() for char in new_password):
+        print("Password must contain a number!")
+        return 
+    confirm_password=input("Confirm your new password: ")
+    if new_password==confirm_password:
+        users[username]=new_password
+        print("Password changed successfully!")
+    else:
+        print("Passwords don't match!")
