@@ -14,6 +14,8 @@ while True:
     if username in users and users[username]==password:
         print("Login successful!")
         print("Welcome,", username)
+        attempts=0
+        total_attempts=0
         break
     else:
         attempts+=1
@@ -29,3 +31,4 @@ while True:
                 print(f"Time left: {seconds} seconds")
                 time.sleep(1)
             attempts=0
+    
