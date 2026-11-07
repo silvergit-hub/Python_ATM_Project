@@ -1,22 +1,33 @@
 import json
-user_data_file = "data/users.json"
 from decimal import Decimal
 
-def load_data():
-    user_list = []
+user_data_file = "data/users.json"
+atm_data_file = "data/atm.json"
+
+
+def load_data(user_data_file):
+    data_list = []
     try:
         with open(user_data_file,"r",encoding="utf-8") as file:    
-            user_list = json.load(file)
-            print("Data loaded.")
+            data_list = json.load(file)
+            #print("Data loaded.")
     except:
-        user_list =[]
-        print("File not found.")
-    return user_list
+        data_list =[]
+        #print("File not found.")
+    return data_list
 
-def save_data(user_list):
+def save_data(user_data_file,user_list):
     with open(user_data_file,"w",encoding="utf-8") as file:
         json.dump(user_list,file,indent=4)
-        print("Data sended.")
+        #print("Data sended.")
+
+# ATM infos
+atm_data_list = load_data(atm_data_file)
+save_data(atm_data_file,atm_data_list)
+daily_withdrawal_limit = Decimal(atm_data_list["daily_withdrawal_limit"])
+daily_deposit_limit= Decimal(atm_data_list["daily_deposit_limit"])
+commision_free_withdrawal = Decimal(atm_data_list["commision_free_withdrawal"])
+commision_fee = Decimal(atm_data_list["commision_fee"])
 
 def create_default_user_data():
     with open(user_data_file,"w",encoding="utf-8") as file:
@@ -26,28 +37,39 @@ def create_default_user_data():
                 "password": "Test@123",
                 "account_number":"10010001",
                 "balance": "2500.0",
+                "status": "Active",
                 "attempts": 6,
-                "isActive": True
+                "daily_withdrawal_amount":"0.0",
+                "daily_deposit_amount": "0.0",
+                "daily_transfer_count":0,
+                "last_transaction_date":""
             },
             {
                 "username": "user002",
                 "password": "Test@456",
                 "account_number":"10010002",
                 "balance": "1500.0",
+                "status": "Active",
                 "attempts": 6,
-                "isActive": True
+                "daily_withdrawal_amount":"0.0",
+                "daily_deposit_amount": "0.0",
+                "daily_transfer_count":0,
+                "last_transaction_date":""            
             },
             {
                 "username": "user003",
                 "password": "Test@789",
                 "account_number":"10010003",
                 "balance": "3000.0",
+                "status": "Active",
                 "attempts": 6,
-                "isActive": True
+                "daily_withdrawal_amount":"0.0",
+                "daily_deposit_amount": "0.0",
+                "daily_transfer_count":0,
+                "last_transaction_date":""
             }
         ]
         json.dump(defaut_users,file,indent=4)
-        print("Yes")
 
 def add_user(user_list,username,password):
     with open(user_data_file,"w", newline="",encoding="utf-8") as file:
@@ -67,7 +89,7 @@ def add_user(user_list,username,password):
         print("User added.")
 
 def change_password(username,new_password):
-    user_data = load_data()
+    user_data = load_data(user_data_file)
     user_found = False
     for i in range(0,len(user_data)):
         if user_data[i]["username"] == username:
@@ -76,31 +98,4 @@ def change_password(username,new_password):
             print(user_data)
     if user_found == False:
         print("User not found.")
-    save_data(user_data)
-
-def change_balance(username,amount,action):
-    user_data = load_data()
-    # Withdraw
-    if action == "w":
-        for i in range(0,len(user_data)):
-            if user_data[i]["username"] == username:
-                balance = Decimal(user_data[i]["balance"])
-                amount = Decimal(amount)
-                if balance >= amount:
-                    balance -=amount
-                    user_data[i]["balance"] = str(balance)
-                    print("Withdrawaled Cash:",amount)
-                    print("Current Balance:",balance)
-                else:
-                    print("Invalid Amount.")
-    #Deposit
-    elif action == "d":
-        for i in range(0,len(user_data)):
-            if user_data[i]["username"] == username:
-                balance = Decimal(user_data[i]["balance"])
-                amount = Decimal(amount)
-                balance += amount
-                user_data[i]["balance"] = str(balance)
-                print("Deposited Cash:",amount)
-                print("Current Balance:",balance)
-    save_data(user_data)
+    save_data(user_data_file,user_data)

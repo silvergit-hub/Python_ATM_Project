@@ -13,13 +13,14 @@ with open(user_data_file,"r",encoding="utf-8")as file:
         storage.create_default_user_data()
         print("Default data loaded.")
 
-# Simple login for test
-username = input("Enter Username: ")
+# Simple inputs for test
+# username = input("Enter Username: ")
 # password = input("Enter Password: ")
-#balance = input("Enter Balance: ")
+# balance = input("Enter Balance: ")
 
+# New user
 # # user_list = []
-# user_list = storage.load_data()
+# user_list = storage.load_data(user_data_file)
 # storage.add_user(user_list,username,password,balance)
 
 # Change password
@@ -27,9 +28,18 @@ username = input("Enter Username: ")
 # storage.change_password(input("Username: "),input("Newpassword: "))
 
 # Withdrawal
-amount = input("Enter withdrawal amount: ")
-storage.change_balance(username,amount,"w")
-
+# while True:
+#     username = input("Enter Username: ")
+#     if username == "exit":
+#         break
+#     amount = input("Enter withdrawal amount: ")
+#     storage.change_balance(username,amount,"w")
+    
 # Deposit
-amount = input("Enter deposit amount: ")
-storage.change_balance(username,amount,"d")
+while True:
+    username = input("Enter Username: ")
+    if username == "exit":
+        break
+    amount = input("Enter deposit amount: ")
+    storage.change_balance(username,amount,"d")
+    

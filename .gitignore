@@ -1,5 +1,6 @@
 data/
 users.json
+atm.json
 
 __pycache__/
 *.pyc
