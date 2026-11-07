@@ -1,4 +1,5 @@
 import json
+
 user_data_file = "data/users.json"
 atm_data_file = "data/atm.json"
 
