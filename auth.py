@@ -3,6 +3,16 @@ users={
     "user02": "Test@456",
     "user03": "Test@789"
 }
+attempts={
+    "user01":0,
+    "user02":0,
+    "user03":0
+}
+total_attempts={
+    "user01":0,
+    "user02":0,
+    "user03":0
+}
 import time 
 
 attempts=0
@@ -11,26 +21,34 @@ while True:
     username=input("Enter your username: ")
     password=input("Enter your password: ")
 
-    if username in users and users[username]==password:
+    if username not in users:
+        print("Username does not exist!")
+        continue
+    if total_attempts[username]>=6:
+        print("Your account is permanently blocked!")
+        continue
+    if users[username]==password:
         print("Login successful!")
         print("Welcome,", username)
-        attempts=0
-        total_attempts=0
-        break
+
+        attempts[username]=0
+        break 
+
     else:
-        attempts+=1
-        total_attempts+=1   
+        attempts[username]+=1
+        total_attempts[username]+=1
+
         print("Invalid username or password!")
-        print("Attempts left:", 3-attempts)
-        if total_attempts==6:
+        print("Attempts left:", 3-attempts[username])
+        if total_attempts[username]==6:
             print("Your account is permanently blocked.")
             break
-        if attempts==3:
+        if attempts[username]==3:
             print("Account temporarily locked. Please try again after 60 seconds.")
             for seconds in range(60, 0, -1):
                 print(f"Time left: {seconds} seconds")
                 time.sleep(1)
-            attempts=0
+            attempts[username]  =0
 
 def change_password(username):
     old_password=input("Enter your current password: ")
