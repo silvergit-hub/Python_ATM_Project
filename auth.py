@@ -77,5 +77,17 @@ def change_password():
             if default_users[i]["password"]==password:
                 new_password=input("Enter your new password: ")
                 #storage.change_password(username, new_password)
-
+                if len(new_password) < 8:
+                    print("Password must be at least 8 characters!")
+                if not any(char.isdigit() for char in new_password):
+                    print("Password must contain at least one digit!")
+                if not any(char.isupper() for char in new_password):
+                    print("Password must contain at least one uppercase letter!")
+                if not any(char.islower() for char in new_password):
+                    print("Password must contain at least one lowercase letter!")
+                confirm_password=input("Confirm your new password: ")
+                if new_password == confirm_password:
+                    print("Password changed succesfully!")
+                else:
+                    print("Passwords do not match!")
 
