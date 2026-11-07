@@ -6,7 +6,7 @@ default_users = [
                 "password": "Test@123",
                 "account_number":"10010001",
                 "balance": "2500.0",
-                "status": "Blocked",
+                "status": "Active",
                 "attempts": 6,
                 "daily_withdrawal_amount":"0.0",
                 "daily_deposit_amount": "0.0",
@@ -91,3 +91,46 @@ def change_password():
                 else:
                     print("Passwords do not match!")
 
+
+def main_menu():
+    print("""====================================
+PYTHON BANKING SYSTEM
+====================================
+Welcome, user01!
+1. View Account Information
+2. Check Balance
+3. Deposit Money
+4. Withdraw Money
+5. Transfer Money
+6. Transaction History
+7. Daily Limits
+8. Change Password
+9. Logout
+0. Exit
+====================================
+Select an option:""")
+    option=input()
+    match option:
+        case "1":
+            print("View Account Information")
+        case "2":
+            print("Check Balance")
+        case "3":
+            print("Deposit Money")
+        case "4":
+            print("Withdraw Money")
+        case "5":
+            print("Transfer Money")
+        case "6":
+            print("Transaction History")
+        case "7":
+            print("Daily Limits")
+        case "8":
+            change_password()
+        case "9":
+            print("Logout")
+        case "0":
+            print("Exit")
+            print("Goodbye!")
+        case _:
+            print("Invalid option!")
