@@ -1,5 +1,4 @@
 import json
-from decimal import Decimal
 
 user_data_file = "data/users.json"
 atm_data_file = "data/atm.json"
@@ -20,14 +19,6 @@ def save_data(user_data_file,user_list):
     with open(user_data_file,"w",encoding="utf-8") as file:
         json.dump(user_list,file,indent=4)
         #print("Data sended.")
-
-# ATM infos
-atm_data_list = load_data(atm_data_file)
-save_data(atm_data_file,atm_data_list)
-daily_withdrawal_limit = Decimal(atm_data_list["daily_withdrawal_limit"])
-daily_deposit_limit= Decimal(atm_data_list["daily_deposit_limit"])
-commision_free_withdrawal = Decimal(atm_data_list["commision_free_withdrawal"])
-commision_fee = Decimal(atm_data_list["commision_fee"])
 
 def create_default_user_data():
     with open(user_data_file,"w",encoding="utf-8") as file:

@@ -36,10 +36,10 @@ with open(user_data_file,"r",encoding="utf-8")as file:
 #     storage.change_balance(username,amount,"w")
     
 # Deposit
-while True:
-    username = input("Enter Username: ")
-    if username == "exit":
-        break
-    amount = input("Enter deposit amount: ")
-    storage.change_balance(username,amount,"d")
-    
+# while True:
+#     username = input("Enter Username: ")
+#     if username == "exit":
+#         break
+#     amount = input("Enter deposit amount: ")
+#     storage.change_balance(username,amount,"d")
+     
