@@ -26,20 +26,3 @@ with open(user_data_file,"r",encoding="utf-8")as file:
 # Change password
 # print("--Change password--")
 # storage.change_password(input("Username: "),input("Newpassword: "))
-
-# Withdrawal
-# while True:
-#     username = input("Enter Username: ")
-#     if username == "exit":
-#         break
-#     amount = input("Enter withdrawal amount: ")
-#     storage.change_balance(username,amount,"w")
-    
-# Deposit
-# while True:
-#     username = input("Enter Username: ")
-#     if username == "exit":
-#         break
-#     amount = input("Enter deposit amount: ")
-#     storage.change_balance(username,amount,"d")
-     
