@@ -13,42 +13,12 @@ total_attempts={
     "user02":0,
     "user03":0
 }
+blocked_users={
+    "user01":False,
+    "user02":False,
+    "user03":False
+}
 import time 
-
-attempts=0
-total_attempts=0
-while True:
-    username=input("Enter your username: ")
-    password=input("Enter your password: ")
-
-    if username not in users:
-        print("Username does not exist!")
-        continue
-    if total_attempts[username]>=6:
-        print("Your account is permanently blocked!")
-        continue
-    if users[username]==password:
-        print("Login successful!")
-        print("Welcome,", username)
-
-        attempts[username]=0
-        break 
-
-    else:
-        attempts[username]+=1
-        total_attempts[username]+=1
-
-        print("Invalid username or password!")
-        print("Attempts left:", 3-attempts[username])
-        if total_attempts[username]==6:
-            print("Your account is permanently blocked.")
-            break
-        if attempts[username]==3:
-            print("Account temporarily locked. Please try again after 60 seconds.")
-            for seconds in range(60, 0, -1):
-                print(f"Time left: {seconds} seconds")
-                time.sleep(1)
-            attempts[username]  =0
 
 def change_password(username):
     old_password=input("Enter your current password: ")
@@ -77,3 +47,76 @@ def change_password(username):
         print("Password changed successfully!")
     else:
         print("Passwords don't match!")
+
+
+def show_menu(username):
+    while True:
+        print("\n===== ATM MAIN MENU =====")
+        print("1. View Account Information")
+        print("2. Check Balance")
+        print("3. Deposit Money")
+        print("4. Withdraw Money")
+        print("5. Transfer Money")
+        print("6. Transaction History")
+        print("7. Daily Limits")
+        print("8. Change Password")
+        print("9. Logout")
+        print("0. Exit")
+
+        choice=input("Enter your choice: ")
+        if choice=="8":
+            change_password(username)
+        elif choice=="9":
+            print("Logging out...")
+            return "logout"
+        elif choice=="0":
+            print("Thank you for using our ATM!")
+            return "exit"
+        else:
+            print("This option is not available yet.")
+        
+
+while True:
+    username=input("Enter your username: ")
+    password=input("Enter your password: ")
+
+    if username not in users:
+        print("Username does not exist!")
+        continue
+    if blocked_users[username]:
+        print("Your account is permanently blocked!")
+        continue
+    if users[username]==password:
+        print("Login successful!")
+        print("Welcome,", username)
+
+        attempts[username]=0
+        total_attempts[username]=0
+        show_menu(username)
+
+        menu_result=show_menu(username)
+        if menu_result=="exit":
+            break
+        elif menu_result=="Logout":
+            continue
+
+    else:
+        attempts[username]+=1
+        total_attempts[username]+=1
+
+        print("Invalid username or password!")
+        if attempts[username]<3:
+            print("Attempts left:", 3-attempts[username])
+        if total_attempts[username]==6:
+            blocked_users[username]=True
+            print("Your account is permanently blocked.")
+            continue
+        if attempts[username]==3:
+            print("Account temporarily locked. Please try again after 60 seconds.")
+            for seconds in range(60, 0, -1):
+                print(f"Time left: {seconds} seconds")
+                time.sleep(1)
+            attempts[username]  =0
+            print("Attempts: ", attempts[username])
+            print("Total attempts: ", total_attempts[username])
+
