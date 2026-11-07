@@ -1,7 +1,9 @@
 import json
+import time
 
 import storage
 import withdrawals
+import atm
 # file links valuable for easy access
 user_data_file = "data/users.json"
 atm_data_file = "data/atm.json"
@@ -16,9 +18,10 @@ with open(user_data_file,"r",encoding="utf-8")as file:
         print("Default data loaded.")
 
 # Simple inputs for test
-# username = input("Enter Username: ")
-# password = input("Enter Password: ")
-# balance = input("Enter Balance: ")
+atm.check_daily_reset()
+username = input("Enter Username: ")
+password = input("Enter Password: ")
+balance = input("Enter Balance: ")
 
 # New user
 # # user_list = []
@@ -30,10 +33,9 @@ with open(user_data_file,"r",encoding="utf-8")as file:
 # storage.change_password(input("Username: "),input("Newpassword: "))
 
 #withdrawals
-while True:
-    username = input("Enter Username: ")
-    if username == "exit":
-        break
-    amount = input("Enter withdrawal amount: ")
-    withdrawals.withdrawal(username,amount)
-    
+# while True:
+#     username = input("Enter Username: ")
+#     if username == "exit":
+#         break
+#     amount = input("Enter withdrawal amount: ")
+#     withdrawals.withdrawal(username,amount)

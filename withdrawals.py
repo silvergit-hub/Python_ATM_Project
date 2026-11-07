@@ -78,3 +78,4 @@ def withdrawal(username,amount):
         print("User not found.")
     storage.save_data(user_data_file,user_data)
     storage.save_data(atm_data_file,atm_data)
+

@@ -1,13 +1,12 @@
 import json
-
 user_data_file = "data/users.json"
 atm_data_file = "data/atm.json"
 
 
-def load_data(user_data_file):
+def load_data(data_file):
     data_list = []
     try:
-        with open(user_data_file,"r",encoding="utf-8") as file:    
+        with open(data_file,"r",encoding="utf-8") as file:    
             data_list = json.load(file)
             #print("Data loaded.")
     except:
@@ -15,8 +14,8 @@ def load_data(user_data_file):
         #print("File not found.")
     return data_list
 
-def save_data(user_data_file,user_list):
-    with open(user_data_file,"w",encoding="utf-8") as file:
+def save_data(data_file,user_list):
+    with open(data_file,"w",encoding="utf-8") as file:
         json.dump(user_list,file,indent=4)
         #print("Data sended.")
 
