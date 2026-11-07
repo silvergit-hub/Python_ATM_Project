@@ -1,17 +1,27 @@
 import storage
+import json
 
-# file links as valuables for easy access
+# file links valuable for easy access
 user_data_file = "data/users.json"
 
-storage.create_default_user_data(user_data_file)
+with open(user_data_file,"r",encoding="utf-8")as file:
+    try:
+        user_list = json.load(file)
+    except:
+        user_list = []
+    if user_list == []:
+        storage.create_default_user_data()
+        print("Default data loaded.")
 
 # Simple login for test
-username = input("Enter Username: ")
-password = input("Enter Password: ")
-balance = input("Enter Balance: ")
+# username = input("Enter Username: ")
+# password = input("Enter Password: ")
+# balance = input("Enter Balance: ")
 
-user_list = []
-user_list = storage.load_data(user_data_file)
-print(user_list)
-storage.add_user(user_list,user_data_file,username,password,balance)
+# # user_list = []
+# user_list = storage.load_data()
+# storage.add_user(user_list,username,password,balance)
 
+# Change password
+# print("--Change password--")
+# storage.change_password(input("Username: "),input("Newpassword: "))
