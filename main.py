@@ -1,8 +1,10 @@
-import storage
 import json
 
+import storage
+import withdrawals
 # file links valuable for easy access
 user_data_file = "data/users.json"
+atm_data_file = "data/atm.json"
 
 with open(user_data_file,"r",encoding="utf-8")as file:
     try:
@@ -27,19 +29,11 @@ with open(user_data_file,"r",encoding="utf-8")as file:
 # print("--Change password--")
 # storage.change_password(input("Username: "),input("Newpassword: "))
 
-# Withdrawal
-# while True:
-#     username = input("Enter Username: ")
-#     if username == "exit":
-#         break
-#     amount = input("Enter withdrawal amount: ")
-#     storage.change_balance(username,amount,"w")
-    
-# Deposit
+#withdrawals
 while True:
     username = input("Enter Username: ")
     if username == "exit":
         break
-    amount = input("Enter deposit amount: ")
-    storage.change_balance(username,amount,"d")
+    amount = input("Enter withdrawal amount: ")
+    withdrawals.withdrawal(username,amount)
     
