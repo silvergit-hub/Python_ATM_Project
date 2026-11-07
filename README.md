@@ -1,0 +1,1 @@
+History hissəsində hesaba olan mədaxil və məxariclər əməliyyat nömrəsi, date and time(tarix və vaxt), məbləğin kimə və ya kimdən göndərildiyi, hesabdakı məbləğ dəyişməsi göstərilməklə qeyd olunur.
