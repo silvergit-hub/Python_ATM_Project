@@ -1,6 +1,6 @@
 import json
 user_data_file = "data/users.json"
-import hashlib
+from decimal import Decimal
 
 def load_data():
     user_list = []
@@ -57,7 +57,7 @@ def add_user(user_list,username,password):
             "username": username,
             "password": password,
             "account_number": account_number,
-            "balance": 0,
+            "balance": "0",
             "attemps": 6,
             "isActive": True
         }
@@ -78,15 +78,29 @@ def change_password(username,new_password):
         print("User not found.")
     save_data(user_data)
 
-def change_balance(username,withdraw_or_):
+def change_balance(username,amount,action):
     user_data = load_data()
-    user_found = False
-    for i in range(0,len(user_data)):
-        if user_data[i]["username"] == username:
-            user_data[i]["password"] = new_password
-            user_found = True
-            print(user_data)
-    if user_found == False:
-        print("User not found.")
+    # Withdraw
+    if action == "w":
+        for i in range(0,len(user_data)):
+            if user_data[i]["username"] == username:
+                balance = Decimal(user_data[i]["balance"])
+                amount = Decimal(amount)
+                if balance >= amount:
+                    balance -=amount
+                    user_data[i]["balance"] = str(balance)
+                    print("Withdrawaled Cash:",amount)
+                    print("Current Balance:",balance)
+                else:
+                    print("Invalid Amount.")
+    #Deposit
+    elif action == "d":
+        for i in range(0,len(user_data)):
+            if user_data[i]["username"] == username:
+                balance = Decimal(user_data[i]["balance"])
+                amount = Decimal(amount)
+                balance += amount
+                user_data[i]["balance"] = str(balance)
+                print("Deposited Cash:",amount)
+                print("Current Balance:",balance)
     save_data(user_data)
-    

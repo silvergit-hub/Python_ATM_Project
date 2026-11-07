@@ -14,9 +14,9 @@ with open(user_data_file,"r",encoding="utf-8")as file:
         print("Default data loaded.")
 
 # Simple login for test
-# username = input("Enter Username: ")
+username = input("Enter Username: ")
 # password = input("Enter Password: ")
-# balance = input("Enter Balance: ")
+#balance = input("Enter Balance: ")
 
 # # user_list = []
 # user_list = storage.load_data()
@@ -25,3 +25,11 @@ with open(user_data_file,"r",encoding="utf-8")as file:
 # Change password
 # print("--Change password--")
 # storage.change_password(input("Username: "),input("Newpassword: "))
+
+# Withdrawal
+amount = input("Enter withdrawal amount: ")
+storage.change_balance(username,amount,"w")
+
+# Deposit
+amount = input("Enter deposit amount: ")
+storage.change_balance(username,amount,"d")
