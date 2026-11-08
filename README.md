@@ -133,7 +133,7 @@ This project was developed collaboratively. Each team member was responsible for
 2. Navigate to the project folder:
 
    ```bash
-   cd GroupProjectProgramming
+   cd Python_ATM_Project
    ```
 
 3. Run the application:
@@ -144,7 +144,7 @@ This project was developed collaboratively. Each team member was responsible for
 
 ---
 
-## 8. What We Learned
+## 7. What We Learned
 
 - Working with Python functions and modules.
 - Reading and writing JSON files.
@@ -154,13 +154,13 @@ This project was developed collaboratively. Each team member was responsible for
 
 ---
 
-## 9. Future Improvements
+## 8. Future Improvements
 
 - We can write an interface for our BankSystem
 
 ---
 
-## 10. Conclusion
+## 9. Conclusion
 
 This project was a valuable experience for our team. Throughout its development, we improved our Python programming skills, learned how to manage data using JSON, and gained practical experience working with Git and GitHub.
 
