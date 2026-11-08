@@ -38,7 +38,7 @@ default_users = [
                 "last_transaction_date":""
             }
         ]
-def authentication():
+def login():
     while True:
         user_found=False
         username=input("Enter your username: ")
@@ -68,7 +68,44 @@ def authentication():
               
             if user_found==False:
                 print("Username or password is wrong!")
+login()
+
+def signup():
+    username=input("Enter your username: ")
+    password=input("Enter your password: ")
+    if len(password) < 8:
+        print("Password must be at least 8 characters!")
+    if not any(char.isdigit() for char in password):
+        print("Password must contain at least one digit!")
+    if not any(char.isupper() for char in password):
+        print("Password must contain at least one uppercase letter!")
+    if not any(char.islower() for char in password):
+        print("Password must contain at least one lowercase letter!")
+    else:
+        print("Signup successful!")
+signup()
+
+def authentication():
+    while True:
+        print("Welcome to the Python Banking System!")
+        print("1. Login")
+        print("2. Signup")
+        print("3. Exit")
+        option=input("Select an option: ")
+        match option:
+            case "1":
+                login()
+            case "2":
+                signup()
+            case "3":
+                print("Goodbye!")
+                break
+            case _:
+                print("Invalid option!")
 authentication()
+
+
+
 def change_password():
     username=input("Enter your username: ")
     password=input("Enter your current password: ")
@@ -90,7 +127,7 @@ def change_password():
                     print("Password changed succesfully!")
                 else:
                     print("Passwords do not match!")
-
+change_password()
 
 def main_menu():
     print("""====================================
