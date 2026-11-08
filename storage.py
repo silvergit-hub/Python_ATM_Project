@@ -86,7 +86,12 @@ def change_password(username,new_password):
         if user_data[i]["username"] == username:
             user_data[i]["password"] = new_password
             user_found = True
-            print(user_data)
     if user_found == False:
         print("User not found.")
     save_data(user_data_file,user_data)
+
+def check_user_exists(username):
+    user_data = load_data(user_data_file)
+    for user in user_data:
+        if user["username"] == username:
+            return True
