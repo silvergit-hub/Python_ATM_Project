@@ -1,13 +1,14 @@
 import json
+from transaction import load_database, save_database
 
-with open("history.json","r") as f:
-    database=json.load(f)
-with open("history.json","w") as f:
-    json.dump(database,f,indent=4)
+
 def digit(number):
     length_of_number=len(str(number))
     number_str="0"*(4-length_of_number)+str(number)
     return number_str
+
+database=load_database()
+save_database(database)
 history_list=database["history"]
 user_name="user01"
 user_his_line=next((user for user in history_list if user.get("username")==user_name),None)
