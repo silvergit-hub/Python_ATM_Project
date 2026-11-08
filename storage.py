@@ -15,9 +15,9 @@ def load_data(data_file):
         #print("File not found.")
     return data_list
 
-def save_data(data_file,user_list):
+def save_data(data_file,data_list):
     with open(data_file,"w",encoding="utf-8") as file:
-        json.dump(user_list,file,indent=4)
+        json.dump(data_list,file,indent=4)
         #print("Data sended.")
 
 def create_default_user_data():
