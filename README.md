@@ -1,1 +1,1 @@
-History hissəsində hesaba olan mədaxil və məxariclər əməliyyat nömrəsi, date and time(tarix və vaxt), məbləğin kimə və ya kimdən göndərildiyi, hesabdakı məbləğ dəyişməsi göstərilməklə qeyd olunur.
+In history part information about both recieving and sending process , date and time, recieved from whom and sended to whom, amount of money both before and after the process are represented .
