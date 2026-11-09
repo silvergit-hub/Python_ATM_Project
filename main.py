@@ -1,13 +1,24 @@
-from datas_history import load_database, save_database
-from transaction import transaction_history_service
+import json
 
-database = load_database()
-save_database(database)
-transaction_history_service(database, user_name="user01")
+import storage
+import atm
+import auth
+# file links valuable for easy access
+user_data_file = "data/users.json"
+atm_data_file = "data/atm.json"
 
+# Create default user data if json file is empty
+with open(user_data_file,"r",encoding="utf-8")as file:
+    try:
+        user_list = json.load(file)
+    except:
+        user_list = []
+    if user_list == []:
+        storage.create_default_user_data()
+        print("Default data loaded.")
 
-"""
-    History hissəsində history.json faylı doldurulmalı , cari istifadəçinin username-i main.py kodundakı user_name hissəsinə yazılmalıdır.
-history.json faylında yeni tarixçə əlavə edən zaman hər fərqli əməliyyat tarixçəsi vergüllə, içərisindəki elementlər isə (məsələn: Recipient , Type) "/" işarəsi ilə ayrıllamlıdır.
+# Check for daily resets every time a user logs in
+atm.check_daily_reset()
 
-"""
+# Start the authentication process
+auth.authentication()
