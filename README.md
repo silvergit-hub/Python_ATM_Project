@@ -1,0 +1,1 @@
+In history part information about both recieving and sending process , date and time, recieved from whom and sended to whom, amount of money both before and after the process are represented .
