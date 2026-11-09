@@ -4,7 +4,11 @@
             "username": "user01",
             "password": "Test@123",
             "account_number": "10010001",
+<<<<<<< HEAD
             "balance": 250000,
+=======
+            "balance": 2500.0,
+>>>>>>> b319ac3c78d131b0c7101e0943112f6fbb521ef8
             "status": "Active",
             "daily_transfer_count": 0,
             "last_transfer_date": "",
@@ -14,7 +18,11 @@
             "username": "user02",
             "password": "Test@456",
             "account_number": "10010002",
+<<<<<<< HEAD
             "balance": 150000,
+=======
+            "balance": 1500.0,
+>>>>>>> b319ac3c78d131b0c7101e0943112f6fbb521ef8
             "status": "Active",
             "daily_transfer_count": 0,
             "last_transfer_date": "",
