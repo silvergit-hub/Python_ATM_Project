@@ -1,4 +1,6 @@
-from datas_history import load_database,save_database
+import storage
+
+user_data_file = "data/users.json"
 
 def digit(number):
     length_of_number=len(str(number))
@@ -6,20 +8,18 @@ def digit(number):
     return number_str
 
 def transaction_history_service(database,user_name):
-    database=load_database()
-    save_database(database)
-    history_list=database["history"]
-    user_his_line=next((user for user in history_list if user.get("username")==user_name),None)
+    user_his_line=next((user for user in database if user.get("username")==user_name),None)
     order=0
     if not user_his_line:
         print("Error")
     else:
-        history_line_string=user_his_line.get("history_line")
+        history_line_string=user_his_line.get("transaction_dates")
         history_array=history_line_string.split(",")
         for line in history_array:
-            one_line=line.split("/")
-            order+=1
-            order_str=digit(order)
-            print("ID: TXN"+order_str)
-            for part in one_line:
-                print(part)
+            if line !="":
+                one_line=line.split("/")
+                order+=1
+                order_str=digit(order)
+                print("ID: TXN"+order_str)
+                for part in one_line:
+                    print(part)

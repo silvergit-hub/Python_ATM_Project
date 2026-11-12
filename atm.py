@@ -24,5 +24,6 @@ def check_daily_reset():
         for i in range(0,len(user_data)):
             user_data[i]["daily_withdrawal_amount"] = "0.0"
             user_data[i]["daily_deposit_amount"] = "0.0"
+            user_data[i]["daily_transfer_count"] = 0
         storage.save_data(user_data_file,user_data)
         storage.save_data(atm_data_file,atm_data)

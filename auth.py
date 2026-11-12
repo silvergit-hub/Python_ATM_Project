@@ -4,14 +4,11 @@ import storage
 import withdrawals
 import depositsAndLimits
 from transaction import transaction_history_service
-from datas_history import load_database,save_database
 from transfer_part import transfer_part
-from loading_saving_data import load_data1,save_data1
 
 # file links valuable for easy access
 user_data_file = "data/users.json"
 atm_data_file = "data/atm.json"
-
 # Load user and ATM data from JSON files
 user_data = storage.load_data(user_data_file)
 atm_data = storage.load_data(atm_data_file)
@@ -142,6 +139,7 @@ def deposit_screen_and_inputs(username):
     amount = input("Amount to deposit(press Enter to return menu): ")
     
     if amount == "":
+      print("Deposit declined.")
       break
 
     try:
@@ -166,6 +164,7 @@ def withdrawal_screen_and_inputs(username):
     amount = input("Amount to withdraw (press Enter to return menu): ")
     
     if amount == "":
+      print("Withdrawal Declined.")
       break
 
     try:
@@ -219,14 +218,10 @@ def main_menu(username):
       withdrawal_screen_and_inputs(username)
       continue_menu(username)
     case "5":
-      database = load_data1()
-      save_data1()
-      transfer_part(database,username)
+      transfer_part(user_data,username)
       continue_menu(username)
     case "6":
-      database = load_database()
-      save_database(database)
-      transaction_history_service(database, username)
+      transaction_history_service(user_data, username)
       continue_menu(username)
     case "7":
       depositsAndLimits.show_daily_limits(username)

@@ -3,7 +3,6 @@ import json
 user_data_file = "data/users.json"
 atm_data_file = "data/atm.json"
 
-
 def load_data(data_file):
     data_list = []
     try:
@@ -33,7 +32,7 @@ def create_default_user_data():
                 "daily_withdrawal_amount":"0.0",
                 "daily_deposit_amount": "0.0",
                 "daily_transfer_count":0,
-                "last_transaction_date":""
+                "transaction_dates":""
             },
             {
                 "username": "user002",
@@ -45,7 +44,7 @@ def create_default_user_data():
                 "daily_withdrawal_amount":"0.0",
                 "daily_deposit_amount": "0.0",
                 "daily_transfer_count":0,
-                "last_transaction_date":""            
+                "transaction_dates":""            
             },
             {
                 "username": "user003",
@@ -57,7 +56,7 @@ def create_default_user_data():
                 "daily_withdrawal_amount":"0.0",
                 "daily_deposit_amount": "0.0",
                 "daily_transfer_count":0,
-                "last_transaction_date":""
+                "transaction_dates":""
             }
         ]
         json.dump(defaut_users,file,indent=4)
