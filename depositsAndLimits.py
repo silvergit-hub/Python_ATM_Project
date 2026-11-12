@@ -16,7 +16,7 @@ daily_tranfer_limit = Decimal(atm_data_list["daily_transfer_limit"])
 
 # Deposit function, but dont check amount value so you must check if amount is a float converted to str 
 # because it is needed to use them with decimal function
-def Depossit(username,amount):
+def Deposit(username,amount):
     user_data = storage.load_data(user_data_file)
     atm_data = storage.load_data(atm_data_file)
     user_found = False
