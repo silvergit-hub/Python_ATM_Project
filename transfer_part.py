@@ -60,7 +60,7 @@ def transfer_part(database,user_account):
                     users_list[i]["balance"] = str(user_new_balance)
                     users_list[i]["daily_transfer_count"]+=1
                     
-                    history_line="Date: "+str(datetime.datetime.now())+"/"+"Type: Trannsfer sent/"+"Recipient account:"+rec_info.get("account_number")+"/"+"Amount: -"+str(amount)+" AZN/"+"Balance before:"+str(user_balance)+" AZN/"+"Balance after:"+str(user_new_balance)+","
+                    history_line="Date: "+str(datetime.datetime.now())+"/"+"Type: Trannsfer sent/"+"Recipient account: "+rec_info.get("account_number")+"/"+"Amount: -"+str(amount)+" AZN/"+"Balance before: "+str(user_balance)+" AZN/"+"Balance after: "+str(user_new_balance)+","
                     user_info["transaction_dates"]+=history_line
             print("Sender new balance: ", user_new_balance)
 
@@ -68,7 +68,7 @@ def transfer_part(database,user_account):
             for i in range(0,len(users_list)):
                 if users_list[i]["username"] == rec_info["username"]:
                     users_list[i]["balance"] = str(rec_new_balance)
-                    history_line="Date: "+str(datetime.datetime.now())+"/"+"Type: Trannsfer recieved/"+"Sender account:"+user_info.get("account_number")+"/"+"Amount: "+str(amount)+" AZN/"+"Balance before:"+str(rec_balance)+" AZN/"+"Balance after:"+str(rec_new_balance)+","
+                    history_line="Date: "+str(datetime.datetime.now())+"/"+"Type: Trannsfer recieved/"+"Sender account: "+user_info.get("account_number")+"/"+"Amount: "+str(amount)+" AZN/"+"Balance before: "+str(rec_balance)+" AZN/"+"Balance after: "+str(rec_new_balance)+","
                     rec_info["transaction_dates"]+=history_line
 
             storage.save_data(user_data_file,users_list)

@@ -21,27 +21,41 @@ def login():
     index = 0
     for i in range(0, len(user_data)):
       if user_data[i]["username"]==username:
-        user_data[i]["attempts"] -=1
         user_found=True
         index = i
         if user_data[i]["status"]=="Blocked":
           print("Your account is blocked!")
+
+        elif user_data[i]["countdown"]>0:
+          left_seconds = user_data[i]["countdown"]
+          for j in range (left_seconds,-1,-1):
+            print("Please wait for",j,"seconds to try again.")
+            user_data[i]["countdown"] = j
+            storage.save_data(user_data_file,user_data)
+            time.sleep(1)
+          user_data[i]["status"] = "Active"        
+        
         elif user_data[i]["password"]==password:
           print("Welcome,",username)
           user_data[i]["attempts"] = 6
+        
         elif user_data[i]["attempts"] == 3:
           user_data[i]["status"] = "Temporarily Blocked"
           print("Your account got temporarily blocked!")
-          for j in range (60,0,-1):
+          for j in range (60,-1,-1):
             print("Please wait for",j,"seconds to try again.")
-            time.sleep(.1)
+            user_data[i]["countdown"] = j
+            storage.save_data(user_data_file,user_data)
+            time.sleep(1)
           user_data[i]["status"] = "Active"
+        
         elif user_data[i]["attempts"] == 0:
           user_data[i]["status"] = "Blocked"
           print("Your account got permanently blocked!")
         else:
           print("Wrong password!")
           print("Left attempts:",user_data[i]["attempts"])  
+        user_data[i]["attempts"] -=1
         storage.save_data(user_data_file,user_data)      
     if user_found==False:
       print("Username or password is wrong")
@@ -52,22 +66,32 @@ def login():
   main_menu(username) if user_found else authentication()
 
 def signup():
-  username=input("Enter your username: ")
-  password=input("Enter your password: ")
-  if storage.check_user_exists(username):
-    print("This username is already taken. Please choose a different name.")
-  elif len(password) < 8:
-    print("Password must be at least 8 characters!")
-  elif not any(char.isdigit() for char in password):
-    print("Password must contain at least one digit!")
-  elif not any(char.isupper() for char in password):
-    print("Password must contain at least one uppercase letter!")
-  elif not any(char.islower() for char in password):
-    print("Password must contain at least one lowercase letter!")
-  else:
-    storage.add_user(user_data,username,password)
-    print("Signup successful!")
-    main_menu(username)
+  while True:
+    username=input("Create username: ")
+    if storage.check_user_exists(username):
+      print("This username is already taken. Please choose a different name.")
+      continue
+    elif not any(char.isalpha() for char in username):
+      print("This username cannot be used")
+      continue
+    elif username == "":
+      authentication()
+      break
+
+    password=input("Create password: ")
+    if len(password) < 8:
+      print("Password must be at least 8 characters!")
+    elif not any(char.isdigit() for char in password):
+      print("Password must contain at least one digit!")
+    elif not any(char.isupper() for char in password):
+      print("Password must contain at least one uppercase letter!")
+    elif not any(char.islower() for char in password):
+      print("Password must contain at least one lowercase letter!")
+    else:
+      storage.add_user(user_data,username,password)
+      print("Signup successful!")
+      main_menu(username)
+      break
 
 def authentication():
   while True:
@@ -95,26 +119,33 @@ Welcome to the Python Banking System!
 
 def change_password(username):
   print("============ Change Password =============")
-  password=input("Enter your current password: ")
   for i in range(0, len(user_data)):
     if user_data[i]["username"]==username:
+      password=input("Enter your current password: ")    
       if user_data[i]["password"]==password:
-        new_password=input("Enter your new password: ")
-        if len(new_password) < 8:
-          print("Password must be at least 8 characters!")
-        elif not any(char.isdigit() for char in new_password):
-          print("Password must contain at least one digit!")
-        elif not any(char.isupper() for char in new_password):
-          print("Password must contain at least one uppercase letter!")
-        elif not any(char.islower() for char in new_password):
-          print("Password must contain at least one lowercase letter!")
-        confirm_password=input("Confirm your new password: ")
-        if new_password == confirm_password:
-          storage.change_password(username,new_password)
-          print("Password changed succesfully!")
-        else:
-          print("Passwords do not match!")
-
+        while True:
+          new_password=input("Enter your new password: ")
+          if len(new_password) < 8:
+            print("Password must be at least 8 characters!")
+            continue
+          elif not any(char.isdigit() for char in new_password):
+            print("Password must contain at least one digit!")
+            continue
+          elif not any(char.isupper() for char in new_password):
+            print("Password must contain at least one uppercase letter!")
+            continue
+          elif not any(char.islower() for char in new_password):
+            print("Password must contain at least one lowercase letter!")
+            continue
+          confirm_password=input("Confirm your new password: ")
+          if new_password == confirm_password:
+            storage.change_password(username,new_password)
+            print("Password changed succesfully!")
+            break
+          else:
+            print("Passwords do not match!")
+      else:
+        print("Password is wrong")
 def show_account_info(username):
   for i in range(0,len(user_data)):
     if user_data[i]["username"] ==username:
@@ -231,7 +262,6 @@ def main_menu(username):
       continue_menu(username)
     case "9":
       authentication()
-      continue_menu(username)
     case "0":
       print("Exit")
       print("Goodbye!")

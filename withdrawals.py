@@ -44,8 +44,8 @@ def withdrawal(username,amount):
                 if commision_free_withdrawal_amount<0:
                     commision_free_withdrawal_amount = 0
                 amount_applying_commision_on = Decimal(amount - commision_free_withdrawal_amount)
-                commission = Decimal(amount_applying_commision_on * commision_fee)
-                taken_cash = commision_free_withdrawal_amount + amount_applying_commision_on + commission
+                commission = Decimal(round(amount_applying_commision_on * commision_fee,2))
+                taken_cash =Decimal(commision_free_withdrawal_amount + amount_applying_commision_on + commission)
                 balance = balance - taken_cash
 
                 user_data[i]["balance"] = str(balance)                   

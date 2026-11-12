@@ -28,7 +28,8 @@ def create_default_user_data():
                 "account_number":"10010001",
                 "balance": "2500.0",
                 "status": "Active",
-                "attempts": 6,
+                "attempts": 5,
+                "countdown": 0,
                 "daily_withdrawal_amount":"0.0",
                 "daily_deposit_amount": "0.0",
                 "daily_transfer_count":0,
@@ -40,7 +41,7 @@ def create_default_user_data():
                 "account_number":"10010002",
                 "balance": "1500.0",
                 "status": "Active",
-                "attempts": 6,
+                "attempts": 5,
                 "daily_withdrawal_amount":"0.0",
                 "daily_deposit_amount": "0.0",
                 "daily_transfer_count":0,
@@ -52,7 +53,7 @@ def create_default_user_data():
                 "account_number":"10010003",
                 "balance": "3000.0",
                 "status": "Active",
-                "attempts": 6,
+                "attempts": 5,
                 "daily_withdrawal_amount":"0.0",
                 "daily_deposit_amount": "0.0",
                 "daily_transfer_count":0,
@@ -70,15 +71,19 @@ def add_user(user_list,username,password):
             "password": password,
             "account_number": account_number,
             "balance": "0",
-            "attemps": 6,
-            "isActive": True
+            "status": "Active",
+            "attempts": 5,
+            "daily_withdrawal_amount":"0.0",
+            "daily_deposit_amount": "0.0",
+            "daily_transfer_count":0,
+            "transaction_dates":""
         }
         user_list.append(user_data)
         # Send data to json
         json.dump(user_list,file,indent=4)
         print("User added.")
 
-def change_password(username,new_password):
+def save_new_password(username,new_password):
     user_data = load_data(user_data_file)
     user_found = False
     for i in range(0,len(user_data)):
