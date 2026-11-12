@@ -3,6 +3,9 @@ import time
 import storage
 import withdrawals
 import depositsAndLimits
+from transaction import transaction_history_service
+from datas_history import load_database,save_database
+
 
 # file links valuable for easy access
 user_data_file = "data/users.json"
@@ -218,8 +221,9 @@ def main_menu(username):
       print("Transfer Money(Soon)")
       continue_menu(username)
     case "6":
-      print("Transaction History(Soon)")
-      continue_menu(username)
+      database = load_database()
+      save_database(database)
+      transaction_history_service(database, username)
     case "7":
       depositsAndLimits.show_daily_limits(username)
       continue_menu(username)
