@@ -5,10 +5,10 @@ import os
 
 FILENAME="data.json"
 
-def load_data():
+def load_data1():
     with open(FILENAME, "r") as file:
         return json.load(file)
 
-def save_data(data):
+def save_data1(data):
     with open(FILENAME, "w") as file:
         json.dump(data, file, indent=4)

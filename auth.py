@@ -5,7 +5,8 @@ import withdrawals
 import depositsAndLimits
 from transaction import transaction_history_service
 from datas_history import load_database,save_database
-
+from transfer_part import transfer_part
+from loading_saving_data import load_data1,save_data1
 
 # file links valuable for easy access
 user_data_file = "data/users.json"
@@ -218,12 +219,15 @@ def main_menu(username):
       withdrawal_screen_and_inputs(username)
       continue_menu(username)
     case "5":
-      print("Transfer Money(Soon)")
+      database = load_data1()
+      save_data1()
+      transfer_part(database,username)
       continue_menu(username)
     case "6":
       database = load_database()
       save_database(database)
       transaction_history_service(database, username)
+      continue_menu(username)
     case "7":
       depositsAndLimits.show_daily_limits(username)
       continue_menu(username)
