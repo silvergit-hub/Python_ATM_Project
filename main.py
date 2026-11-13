@@ -1,8 +1,5 @@
 import json
-
 import storage
-import atm
-import auth
 
 # file links valuable for easy access
 user_data_file = "data/users.json"
@@ -20,8 +17,11 @@ def check_json_files(file_path,type):
         storage.create_default_atm_data()
 
 # Create default data files if json file is empty or not exist
-check_json_files(user_data_file,"users")
+check_json_files(user_data_file,"user")
 check_json_files(atm_data_file,"atm")
+
+import atm
+import auth
 
 # Check for daily resets every time a user logs in
 atm.check_daily_reset()
