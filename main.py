@@ -19,12 +19,12 @@ def check_json_files(file_path,type):
     elif data_list == [] and type == "atm":
         storage.create_default_atm_data()
 
-# Check for daily resets every time a user logs in
-atm.check_daily_reset()
-
 # Create default data files if json file is empty or not exist
 check_json_files(user_data_file,"users")
 check_json_files(atm_data_file,"atm")
+
+# Check for daily resets every time a user logs in
+atm.check_daily_reset()
 
 # Start the authentication process
 auth.authentication()
