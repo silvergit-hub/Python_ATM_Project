@@ -1,29 +1,29 @@
 [
     {
         "username": "user001",
-        "password": "Test1234",
+        "password": "Test@123",
         "account_number": "10010001",
-        "balance": "1398.00",
+        "balance": "2500.0",
         "status": "Active",
-        "attempts": 6,
+        "attempts": 5,
         "countdown": 0,
         "daily_withdrawal_amount": "0.0",
         "daily_deposit_amount": "0.0",
         "daily_transfer_count": 0,
-        "transaction_dates": "Date: 2026-11-12 22:44:53.458410/Type: Trannsfer sent/Recipient account:10010002/Amount: -200 AZN/Balance before:2500.00 AZN/Balance after:2300.00,"
+        "transaction_dates": ""
     },
     {
         "username": "user002",
         "password": "Test@456",
         "account_number": "10010002",
-        "balance": "1700.0",
+        "balance": "1500.0",
         "status": "Active",
-        "attempts": 6,
+        "attempts": 5,
         "countdown": 0,
         "daily_withdrawal_amount": "0.0",
         "daily_deposit_amount": "0.0",
         "daily_transfer_count": 0,
-        "transaction_dates": "Date: 2026-11-12 22:44:53.458620/Type: Trannsfer recieved/Sender account:10010001/Amount: 200 AZN/Balance before:1500.0 AZN/Balance after:1700.0,"
+        "transaction_dates": ""
     },
     {
         "username": "user003",
@@ -31,7 +31,7 @@
         "account_number": "10010003",
         "balance": "3000.0",
         "status": "Active",
-        "attempts": 6,
+        "attempts": 5,
         "countdown": 0,
         "daily_withdrawal_amount": "0.0",
         "daily_deposit_amount": "0.0",
