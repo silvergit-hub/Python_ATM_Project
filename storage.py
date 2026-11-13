@@ -1,4 +1,5 @@
 import json
+from datetime import date
 
 user_data_file = "data/users.json"
 atm_data_file = "data/atm.json"
@@ -21,7 +22,7 @@ def save_data(data_file,data_list):
 
 def create_default_user_data():
     with open(user_data_file,"w",encoding="utf-8") as file:
-        defaut_users = [
+        defaut_users_data = [
             {
                 "username": "user001",
                 "password": "Test@123",
@@ -60,7 +61,22 @@ def create_default_user_data():
                 "transaction_dates":""
             }
         ]
-        json.dump(defaut_users,file,indent=4)
+        json.dump(defaut_users_data,file,indent=4)
+
+def create_default_atm_data():
+    with open(atm_data_file,"w",encoding="utf-8") as file:
+        today_date = date.today()
+        default_atm_data = {
+            "daily_atm_cash": "5000.0",
+            "daily_deposit_limit": "2000.0",
+            "daily_withdrawal_limit": "1000.0",
+            "daily_transfer_limit": "5",
+            "commision_free_withdrawal": "500.0",
+            "commision_fee": "0.02",
+            "last_reset_date": str(today_date)
+        }
+        json.dump(default_atm_data,file,indent=4)
+        
 
 def add_user(user_list,username,password):
     with open(user_data_file,"w", newline="",encoding="utf-8") as file:
