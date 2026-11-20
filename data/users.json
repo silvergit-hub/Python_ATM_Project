@@ -1,0 +1,41 @@
+[
+    {
+        "username": "user001",
+        "password": "Test@123",
+        "account_number": "10010001",
+        "balance": "2500.0",
+        "status": "Active",
+        "attempts": 5,
+        "countdown": 0,
+        "daily_withdrawal_amount": "0.0",
+        "daily_deposit_amount": "0.0",
+        "daily_transfer_count": 0,
+        "transaction_dates": ""
+    },
+    {
+        "username": "user002",
+        "password": "Test@456",
+        "account_number": "10010002",
+        "balance": "1500.0",
+        "status": "Active",
+        "attempts": 5,
+        "countdown": 0,
+        "daily_withdrawal_amount": "0.0",
+        "daily_deposit_amount": "0.0",
+        "daily_transfer_count": 0,
+        "transaction_dates": ""
+    },
+    {
+        "username": "user003",
+        "password": "Test@789",
+        "account_number": "10010003",
+        "balance": "3000.0",
+        "status": "Active",
+        "attempts": 5,
+        "countdown": 0,
+        "daily_withdrawal_amount": "0.0",
+        "daily_deposit_amount": "0.0",
+        "daily_transfer_count": 0,
+        "transaction_dates": ""
+    }
+]

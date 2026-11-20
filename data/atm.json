@@ -1,0 +1,9 @@
+{
+    "daily_atm_cash": "5000.0",
+    "daily_deposit_limit": "2000.0",
+    "daily_withdrawal_limit": "1000.0",
+    "daily_transfer_limit": "5",
+    "commision_free_withdrawal": "500.0",
+    "commision_fee": "0.02",
+    "last_reset_date": "2026-11-13"
+}
