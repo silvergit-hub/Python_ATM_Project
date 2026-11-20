@@ -249,9 +249,13 @@ def main_menu(username):
       withdrawal_screen_and_inputs(username)
       continue_menu(username)
     case "5":
+      user_data = storage.load_data(user_data_file)
+      storage.save_data(user_data_file,user_data)
       transfer_part(user_data,username)
       continue_menu(username)
     case "6":
+      user_data = storage.load_data(user_data_file)
+      storage.save_data(user_data_file,user_data)
       transaction_history_service(user_data, username)
       continue_menu(username)
     case "7":
