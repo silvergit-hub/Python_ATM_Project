@@ -91,6 +91,7 @@ def add_user(user_list,username,password):
             "balance": "0",
             "status": "Active",
             "attempts": 5,
+            "countdown": 0,
             "daily_withdrawal_amount":"0.0",
             "daily_deposit_amount": "0.0",
             "daily_transfer_count":0,
